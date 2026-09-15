@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Paddock Pal — Live</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body class="watch">
+    <div class="player-wrap">
+      <!-- muted is required for autoplay, and there is no audio track anyway -->
+      <video id="player" autoplay muted playsinline></video>
+      <div class="hud">
+        <span class="chip" id="status" data-state="waiting">Waiting for the rider</span>
+        <span class="bars" id="bars" data-bars="0"><i></i><i></i><i></i></span>
+      </div>
+    </div>
+    <p id="message" class="detail"></p>
+    <script type="module" src="/src/watch/main.js"></script>
+  </body>
+</html>

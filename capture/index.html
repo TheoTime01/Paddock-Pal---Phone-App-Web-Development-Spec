@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Paddock Pal — Capture</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body class="capture">
+    <header class="bar">
+      <span class="chip" id="session-state" data-state="IDLE">IDLE</span>
+      <span class="chip" id="stream-state" data-state="OFF">OFF</span>
+      <span class="chip" id="turret-state" data-state="warn">no turret</span>
+    </header>
+
+    <section class="stage">
+      <video id="preview" autoplay muted playsinline></video>
+      <canvas id="overlay" width="640" height="360"></canvas>
+    </section>
+
+    <p id="status-detail" class="detail"></p>
+    <p id="stats" class="detail mono"></p>
+
+    <section class="panel">
+      <h2>1 · Uplink</h2>
+      <label class="row">
+        <span>Venue</span>
+        <select id="venue">
+          <option value="outdoor">Outdoor (1/50 s)</option>
+          <option value="indoor">Indoor arena (1/100 s)</option>
+        </select>
+      </label>
+      <button class="btn" id="btn-preflight">Run 15 s preflight</button>
+      <p id="preflight-result" class="verdict"></p>
+    </section>
+
+    <section class="panel">
+      <h2>2 · Turret</h2>
+      <button class="btn" id="btn-connect-turret">Connect turret</button>
+      <button class="btn ghost" id="btn-fake-turret">Use fake turret (dev)</button>
+    </section>
+
+    <section class="panel">
+      <h2>3 · Go live</h2>
+      <button class="btn primary" id="btn-start">Start session</button>
+      <button class="btn" id="btn-reacquire">Re-acquire</button>
+      <button class="btn danger" id="btn-stop">Stop</button>
+      <p class="fine">Viewer link: <a id="viewer-link" hidden></a></p>
+    </section>
+
+    <section class="panel">
+      <h2>Log</h2>
+      <div id="log" class="log"></div>
+    </section>
+
+    <script type="module" src="/src/capture/main.js"></script>
+  </body>
+</html>

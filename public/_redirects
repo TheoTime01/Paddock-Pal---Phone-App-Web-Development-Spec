@@ -1,0 +1,2 @@
+# /watch/:id is one page — the id is read from the path (src/watch/main.js).
+/watch/*  /watch/index.html  200
