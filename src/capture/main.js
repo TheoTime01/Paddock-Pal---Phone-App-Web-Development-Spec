@@ -455,6 +455,11 @@ function boot() {
   window.addEventListener('pagehide', () => {
     if (app.sessionInfo) destroyStreamSession(app.sessionInfo.sessionId);
   });
+
+  // Debug handle for field testing over chrome://inspect — TESTING.md leans on
+  // it to pull getStats() off a phone. Read-only by convention; nothing in the
+  // app reads it back.
+  window.__paddockPal = app;
 }
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
