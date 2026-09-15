@@ -1,0 +1,22 @@
+name = "paddock-pal-session-broker"
+main = "worker/index.js"
+compatibility_date = "2026-01-01"
+
+# Route the API on the same origin as the Pages deployment (§1: one origin, so
+# the capture page needs no CORS and no credential of its own).
+# routes = [{ pattern = "paddock-pal.example.com/api/*", zone_name = "example.com" }]
+
+[vars]
+# ALLOWED_ORIGIN is only needed for split dev setups; same-origin needs no CORS.
+ALLOWED_ORIGIN = "http://localhost:5173"
+# CF_ACCOUNT_ID = "<your cloudflare account id>"
+
+# Session records, written with a TTL so orphaned Live Inputs get reaped (§3.1).
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "<create with: wrangler kv namespace create SESSIONS>"
+preview_id = "<create with: wrangler kv namespace create SESSIONS --preview>"
+
+# CF_STREAM_TOKEN is a SECRET, never a var:
+#   wrangler secret put CF_STREAM_TOKEN
+# It needs Stream:Edit and it must never reach client JS (§1).
